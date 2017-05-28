@@ -9,11 +9,9 @@
 /* Begin PBXBuildFile section */
 		FECE4A8D1ED7829F00C043AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECE4A8C1ED7829F00C043AA /* AppDelegate.swift */; };
 		FECE4A8F1ED7829F00C043AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECE4A8E1ED7829F00C043AA /* ViewController.swift */; };
-		FECE4A921ED7829F00C043AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FECE4A901ED7829F00C043AA /* Main.storyboard */; };
 		FECE4A941ED7829F00C043AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FECE4A931ED7829F00C043AA /* Assets.xcassets */; };
 		FECE4A971ED7829F00C043AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FECE4A951ED7829F00C043AA /* LaunchScreen.storyboard */; };
 		FECE4AA81ED782DB00C043AA /* AudioUnitViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECE4AA71ED782DB00C043AA /* AudioUnitViewControllerExt.swift */; };
-		FECE4AAB1ED782DB00C043AA /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FECE4AA91ED782DB00C043AA /* MainInterface.storyboard */; };
 		FECE4AB01ED782DB00C043AA /* PedalAU.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FECE4AA21ED782DB00C043AA /* PedalAU.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FECE4ABE1ED785B300C043AA /* PedalFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = FECE4ABC1ED785B300C043AA /* PedalFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FECE4AC11ED785B300C043AA /* PedalFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECE4ABA1ED785B300C043AA /* PedalFramework.framework */; };
@@ -72,7 +70,6 @@
 		FECE4A891ED7829F00C043AA /* Pedal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pedal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FECE4A8C1ED7829F00C043AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FECE4A8E1ED7829F00C043AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FECE4A911ED7829F00C043AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FECE4A931ED7829F00C043AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FECE4A961ED7829F00C043AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FECE4A981ED7829F00C043AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,7 +77,6 @@
 		FECE4AA41ED782DB00C043AA /* PedalAUAudioUnit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PedalAUAudioUnit.h; path = ../PedalAU/PedalAUAudioUnit.h; sourceTree = "<group>"; };
 		FECE4AA51ED782DB00C043AA /* PedalAUAudioUnit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PedalAUAudioUnit.m; path = ../PedalAU/PedalAUAudioUnit.m; sourceTree = "<group>"; };
 		FECE4AA71ED782DB00C043AA /* AudioUnitViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioUnitViewControllerExt.swift; sourceTree = "<group>"; };
-		FECE4AAA1ED782DB00C043AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		FECE4AAC1ED782DB00C043AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FECE4ABA1ED785B300C043AA /* PedalFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PedalFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FECE4ABC1ED785B300C043AA /* PedalFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PedalFramework.h; sourceTree = "<group>"; };
@@ -145,7 +141,6 @@
 			children = (
 				FECE4A8C1ED7829F00C043AA /* AppDelegate.swift */,
 				FECE4A8E1ED7829F00C043AA /* ViewController.swift */,
-				FECE4A901ED7829F00C043AA /* Main.storyboard */,
 				FECE4A931ED7829F00C043AA /* Assets.xcassets */,
 				FECE4A951ED7829F00C043AA /* LaunchScreen.storyboard */,
 				FECE4A981ED7829F00C043AA /* Info.plist */,
@@ -157,7 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				FECE4AA71ED782DB00C043AA /* AudioUnitViewControllerExt.swift */,
-				FECE4AA91ED782DB00C043AA /* MainInterface.storyboard */,
 				FECE4AAC1ED782DB00C043AA /* Info.plist */,
 			);
 			path = PedalAU;
@@ -310,7 +304,6 @@
 			files = (
 				FECE4A971ED7829F00C043AA /* LaunchScreen.storyboard in Resources */,
 				FECE4A941ED7829F00C043AA /* Assets.xcassets in Resources */,
-				FECE4A921ED7829F00C043AA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +311,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FECE4AAB1ED782DB00C043AA /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,28 +366,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		FECE4A901ED7829F00C043AA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FECE4A911ED7829F00C043AA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FECE4A951ED7829F00C043AA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				FECE4A961ED7829F00C043AA /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		FECE4AA91ED782DB00C043AA /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FECE4AAA1ED782DB00C043AA /* Base */,
-			);
-			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
