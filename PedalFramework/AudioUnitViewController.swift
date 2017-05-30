@@ -11,7 +11,7 @@ import CoreAudioKit
 
 public class AudioUnitViewController: AUViewController {
     
-    public var audioUnit: AUAudioUnit?
+    public var audioUnit: PedalAUAudioUnit?
     
 
     public override func viewDidLoad() {
@@ -27,6 +27,7 @@ public class AudioUnitViewController: AUViewController {
         
         if audioUnit == nil {
             print("audiounit nil")
+        
         }
         
         // Get the parameter tree and add observers for any parameters that the UI needs to keep in sync with the AudioUnit

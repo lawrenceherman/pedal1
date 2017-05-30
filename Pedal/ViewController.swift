@@ -16,7 +16,7 @@ class ViewController: UIViewController {
 
     var auViewController: AudioUnitViewController!
     var containerView: UIView!
-    var avAudioUnit = AVAudioUnit()
+//    var avAudioUnit = AVAudioUnit()
     
     
     var audioEngine: AVAudioEngine!
@@ -24,6 +24,9 @@ class ViewController: UIViewController {
     var audioFile: AVAudioFile!
     var audioFileBuffer: AVAudioPCMBuffer!
     var componentDescription: AudioComponentDescription!
+    
+    var testAudioUnit: AUAudioUnit?
+    var testUnitNode: AVAudioUnit?
 //    var session: AVAudioSession!
     
  
@@ -33,6 +36,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         embedPlugInView()
+       
+        
         loadTempSource()
         
     
@@ -55,7 +60,7 @@ class ViewController: UIViewController {
         
     // whats up with version.  does name need to match .info on appex
         
-        AUAudioUnit.registerSubclass(PedalAUAudioUnit.self, as: componentDescription, name: "Demo: PedalAU", version: 67072)
+        AUAudioUnit.registerSubclass(PedalAUAudioUnit.self, as: componentDescription, name: "Demo: PedalAU", version: UInt32.max)
         
         loadAudioEngine()
         
@@ -99,7 +104,7 @@ class ViewController: UIViewController {
         let audioFrameCount = UInt32(audioFile.length)
         audioFileBuffer = AVAudioPCMBuffer(pcmFormat: audioFormat, frameCapacity: audioFrameCount)
     
-        print(audioFileBuffer.format)
+        print("audioFileBuffer Format \(audioFileBuffer.format)")
     
         do {
             try audioFile.read(into: audioFileBuffer)
@@ -121,17 +126,66 @@ class ViewController: UIViewController {
         
         sourceNode.scheduleFile(audioFile, at: nil, completionHandler: nil)
         
+        let hardwareFormat = self.audioEngine.outputNode.outputFormat(forBus: 0)
+        
+        print("outputNode output \(hardwareFormat)")
+        self.audioEngine.connect(self.audioEngine.mainMixerNode, to: self.audioEngine.outputNode, format: hardwareFormat)
+        
 //        audioEngine.connect(sourceNode, to: audioEngine.mainMixerNode, format: audioFileBuffer.format)
         
-        AVAudioUnit.instantiate(with: self.componentDescription, options: []) { (avAudioUnit, error) in
+        print("main mixer node input \(audioEngine.mainMixerNode.inputFormat(forBus: 0))")
+        
+        print("main mixer node output \(audioEngine.mainMixerNode.outputFormat(forBus:0))")
+        
+    
+        
+        
+        AVAudioUnit.instantiate(with: self.componentDescription, options: .loadOutOfProcess) {
+            (avAudioUnit, error) in
+            
+            
             
             guard let avAudioUnit = avAudioUnit else { return }
+            
+            
+            
+            print("avAudioUnitLegit")
+            
+        
+            self.testUnitNode = avAudioUnit
         
             self.audioEngine.attach(avAudioUnit)
-        
-            self.audioEngine.connect(self.sourceNode, to: self.avAudioUnit, format: self.audioFileBuffer.format)
             
-            self.audioEngine.connect(self.avAudioUnit, to: self.audioEngine.mainMixerNode, format: self.audioFileBuffer.format)
+            print(avAudioUnit.numberOfOutputs)
+            print(avAudioUnit.numberOfInputs)
+            print(avAudioUnit.manufacturerName)
+            print(avAudioUnit.auAudioUnit)
+            
+            self.audioEngine.connect(self.sourceNode, to: avAudioUnit, format: self.audioFile!.processingFormat)
+
+            self.audioEngine.connect(avAudioUnit, to: self.audioEngine.mainMixerNode, format: self.audioFile.processingFormat)
+
+            
+
+            
+            print(avAudioUnit.audioComponentDescription)
+//
+//
+     //       print(x.channelCount)
+//            print(y.channelCount)
+            
+            
+        
+            
+            
+           
+            
+            
+        
+            
+            self.testAudioUnit = avAudioUnit.auAudioUnit
+        
+        
         }
         
         
