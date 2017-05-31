@@ -36,35 +36,29 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         embedPlugInView()
-       
-        
         loadTempSource()
-        
-    
         
         componentDescription = AudioComponentDescription()
         
     // is kAudioUnitType_Effect just an alias for 4 Byte OSType
-        
         componentDescription.componentType = kAudioUnitType_Effect
         
     // figure out this OSType.  "Manufacturer needs to be registered with apple"
-        
         componentDescription.componentSubType = 0x666c7472 /*fltr*/
         componentDescription.componentManufacturer = 0x44656d6f /*Demo*/
         
     // these are supposed to be set to 0
-        
         componentDescription.componentFlags = 0
         componentDescription.componentFlagsMask = 0
         
     // whats up with version.  does name need to match .info on appex
-        
         AUAudioUnit.registerSubclass(PedalAUAudioUnit.self, as: componentDescription, name: "Demo: PedalAU", version: UInt32.max)
         
         loadAudioEngine()
         
         try! audioEngine.start()
+   
+        
         sourceNode.play()
         
         
@@ -97,14 +91,14 @@ class ViewController: UIViewController {
         
         audioFile = AVAudioFile()
 
-        let path = Bundle.main.path(forResource: "DIO Dont talk to Strangers LH track for Z v010716", ofType: "mp3")!
+        let path = Bundle.main.path(forResource: "DTTS 44.1", ofType: "mp3")!
         let url = URL(fileURLWithPath: path)
         audioFile = try! AVAudioFile(forReading: url)
         let audioFormat = audioFile.processingFormat
         let audioFrameCount = UInt32(audioFile.length)
         audioFileBuffer = AVAudioPCMBuffer(pcmFormat: audioFormat, frameCapacity: audioFrameCount)
     
-        print("audioFileBuffer Format \(audioFileBuffer.format)")
+        print("audioFileBuffer Format \(audioFileBuffer.format)\n\n")
     
         do {
             try audioFile.read(into: audioFileBuffer)
@@ -118,89 +112,54 @@ class ViewController: UIViewController {
     func loadAudioEngine() {
     
         audioEngine = AVAudioEngine()
-        
         sourceNode = AVAudioPlayerNode()
         
         audioEngine.attach(sourceNode)
-
-        
         sourceNode.scheduleFile(audioFile, at: nil, completionHandler: nil)
         
         let hardwareFormat = self.audioEngine.outputNode.outputFormat(forBus: 0)
         
-        print("outputNode output \(hardwareFormat)")
+        print("outputNode output \(hardwareFormat)\n\n")
+        
         self.audioEngine.connect(self.audioEngine.mainMixerNode, to: self.audioEngine.outputNode, format: hardwareFormat)
         
-//        audioEngine.connect(sourceNode, to: audioEngine.mainMixerNode, format: audioFileBuffer.format)
         
-        print("main mixer node input \(audioEngine.mainMixerNode.inputFormat(forBus: 0))")
+        print("main mixer node input \(audioEngine.mainMixerNode.inputFormat(forBus: 0))\n\n")
         
-        print("main mixer node output \(audioEngine.mainMixerNode.outputFormat(forBus:0))")
-        
-    
-        
+        print("main mixer node output \(audioEngine.mainMixerNode.outputFormat(forBus:0))\n\n")
         
         AVAudioUnit.instantiate(with: self.componentDescription, options: .loadOutOfProcess) {
             (avAudioUnit, error) in
             
-            
-            
             guard let avAudioUnit = avAudioUnit else { return }
             
-            
-            
-            print("avAudioUnitLegit")
             
         
             self.testUnitNode = avAudioUnit
         
             self.audioEngine.attach(avAudioUnit)
             
+            
             print(avAudioUnit.numberOfOutputs)
             print(avAudioUnit.numberOfInputs)
             print(avAudioUnit.manufacturerName)
-            print(avAudioUnit.auAudioUnit)
+            print(avAudioUnit.auAudioUnit.audioUnitName)
             
-            self.audioEngine.connect(self.sourceNode, to: avAudioUnit, format: self.audioFile!.processingFormat)
+//            self.audioEngine.connect(self.sourceNode, to: self.audioEngine.mainMixerNode, format: self.audioFile.processingFormat)
+            
+            self.audioEngine.connect(self.sourceNode, to: avAudioUnit, format: self.audioFile.processingFormat)
 
             self.audioEngine.connect(avAudioUnit, to: self.audioEngine.mainMixerNode, format: self.audioFile.processingFormat)
 
-            
-
-            
-            print(avAudioUnit.audioComponentDescription)
-//
-//
-     //       print(x.channelCount)
-//            print(y.channelCount)
-            
-            
-        
-            
-            
-           
-            
-            
-        
-            
             self.testAudioUnit = avAudioUnit.auAudioUnit
+            
+            let audioUnit = self.testAudioUnit! as! PedalAUAudioUnit
+            self.auViewController.audioUnit = audioUnit
+        
         
         
         }
         
-        
-
-        
-        
-//        let sourceConnPoints = [AVAudioConnectionPoint(node: audioEngine.mainMixerNode, bus:0),
-//                                AVAudioConnectionPoint(node: effect1, bus: 0),
-//                                AVAudioConnectionPoint(node: effect2, bus: 0),
-//                                AVAudioConnectionPoint(node: effect3, bus: 0)]
-//        
-//        audioEngine.connect(sourceNode, to: sourceConnPoints, fromBus: 0, format: audioFileBuffer.format)
-//        
-//        
-
     }
     
 //    func setSessionCategoryMode() {

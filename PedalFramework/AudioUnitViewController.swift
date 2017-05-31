@@ -11,7 +11,32 @@ import CoreAudioKit
 
 public class AudioUnitViewController: AUViewController {
     
-    public var audioUnit: PedalAUAudioUnit?
+    public var audioUnit: PedalAUAudioUnit? {
+        didSet {
+            
+            
+            
+//            
+//            DispatchQueue.main.async {
+//                if self.isViewLoaded{
+//                    self.connectViewWithAU()
+//                }
+//            }
+            
+            print("AudioUnitViewControllerwasset")
+            
+        }
+        
+        
+        
+    }
+    
+    func connectViewWithAU() {
+        
+        
+        
+        
+    }
     
 
     public override func viewDidLoad() {
@@ -26,11 +51,14 @@ public class AudioUnitViewController: AUViewController {
         
         
         if audioUnit == nil {
-            print("audiounit nil")
+            print("inside AudioUnitViewController audiounit is nil\n\n")
         
+        } else {
+            print("inside AudioUnitViewController audiounit is not nil \n\n")
         }
         
         // Get the parameter tree and add observers for any parameters that the UI needs to keep in sync with the AudioUnit
+    
     }
     
 }

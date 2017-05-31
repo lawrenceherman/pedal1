@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FEABB07C1EDA3DAE00BDD6F5 /* DIO Dont talk to Strangers LH track for Z v010716.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FEABB07B1EDA3DAE00BDD6F5 /* DIO Dont talk to Strangers LH track for Z v010716.mp3 */; };
+		FE7B21031EDDADD000FC3A85 /* DTTS 44.1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FE7B21021EDDADD000FC3A85 /* DTTS 44.1.mp3 */; };
 		FECE4A8D1ED7829F00C043AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECE4A8C1ED7829F00C043AA /* AppDelegate.swift */; };
 		FECE4A8F1ED7829F00C043AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECE4A8E1ED7829F00C043AA /* ViewController.swift */; };
 		FECE4A941ED7829F00C043AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FECE4A931ED7829F00C043AA /* Assets.xcassets */; };
@@ -67,7 +67,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		FEABB07B1EDA3DAE00BDD6F5 /* DIO Dont talk to Strangers LH track for Z v010716.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "DIO Dont talk to Strangers LH track for Z v010716.mp3"; sourceTree = "<group>"; };
+		FE7B21021EDDADD000FC3A85 /* DTTS 44.1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "DTTS 44.1.mp3"; sourceTree = "<group>"; };
 		FECE4A891ED7829F00C043AA /* Pedal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pedal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FECE4A8C1ED7829F00C043AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FECE4A8E1ED7829F00C043AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 		FEABB0761EDA3CC800BDD6F5 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				FEABB07B1EDA3DAE00BDD6F5 /* DIO Dont talk to Strangers LH track for Z v010716.mp3 */,
+				FE7B21021EDDADD000FC3A85 /* DTTS 44.1.mp3 */,
 			);
 			name = Sound;
 			sourceTree = "<group>";
@@ -311,7 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FECE4A941ED7829F00C043AA /* Assets.xcassets in Resources */,
-				FEABB07C1EDA3DAE00BDD6F5 /* DIO Dont talk to Strangers LH track for Z v010716.mp3 in Resources */,
+				FE7B21031EDDADD000FC3A85 /* DTTS 44.1.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,7 +480,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Lawrence-Herman.Pedal";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -495,7 +495,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Lawrence-Herman.Pedal";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
