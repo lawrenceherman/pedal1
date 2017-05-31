@@ -25,8 +25,8 @@ class ViewController: UIViewController {
     var audioFileBuffer: AVAudioPCMBuffer!
     var componentDescription: AudioComponentDescription!
     
-    var testAudioUnit: AUAudioUnit?
-    var testUnitNode: AVAudioUnit?
+    var testAUAudioUnit: AUAudioUnit!
+    var testAVAudioUnit: AVAudioUnit!
 //    var session: AVAudioSession!
     
  
@@ -56,7 +56,6 @@ class ViewController: UIViewController {
         
         loadAudioEngine()
         
-        try! audioEngine.start()
    
         
 //        sourceNode.play()
@@ -128,16 +127,16 @@ class ViewController: UIViewController {
         
         print("main mixer node output \(audioEngine.mainMixerNode.outputFormat(forBus:0))\n\n")
         
-        AVAudioUnit.instantiate(with: self.componentDescription, options: .loadOutOfProcess) {
+        AVAudioUnit.instantiate(with: self.componentDescription, options: []) {
             (avAudioUnit, error) in
             
             guard let avAudioUnit = avAudioUnit else { return }
             
             
         
-            self.testUnitNode = avAudioUnit
+            self.testAVAudioUnit = avAudioUnit
         
-            self.audioEngine.attach(avAudioUnit)
+            self.audioEngine.attach(self.testAVAudioUnit!)
             
             
             print(avAudioUnit.numberOfOutputs)
@@ -145,16 +144,20 @@ class ViewController: UIViewController {
             print(avAudioUnit.manufacturerName)
             print(avAudioUnit.auAudioUnit.audioUnitName)
             
-//            self.audioEngine.connect(self.sourceNode, to: self.audioEngine.mainMixerNode, format: self.audioFile.processingFormat)
             
-            self.audioEngine.connect(self.sourceNode, to: avAudioUnit, format: self.audioFile.processingFormat)
+            self.audioEngine.connect(self.sourceNode, to: self.testAVAudioUnit, format: self.audioFile.processingFormat)
 
-            self.audioEngine.connect(avAudioUnit, to: self.audioEngine.mainMixerNode, format: self.audioFile.processingFormat)
+            self.audioEngine.connect(self.testAVAudioUnit, to: self.audioEngine.mainMixerNode, format: self.audioFile.processingFormat)
 
-            self.testAudioUnit = avAudioUnit.auAudioUnit
+        
+//            self.testAudioUnit = avAudioUnit.auAudioUnit
             
-            let audioUnit = self.testAudioUnit! as! PedalAUAudioUnit
-            self.auViewController.audioUnit = audioUnit
+//            let audioUnit = self.testAudioUnit! as! PedalAUAudioUnit
+            
+            self.auViewController.audioUnit = self.testAVAudioUnit.auAudioUnit as! PedalAUAudioUnit
+            
+            try! self.audioEngine.start()
+
         
         
         
