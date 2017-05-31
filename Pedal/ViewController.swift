@@ -59,7 +59,7 @@ class ViewController: UIViewController {
         try! audioEngine.start()
    
         
-        sourceNode.play()
+//        sourceNode.play()
         
         
         

@@ -9,24 +9,29 @@
 #import "PedalAUAudioUnit.h"
 
 #import <AVFoundation/AVFoundation.h>
+//#import "BufferedAudioBus.hpp"
 
 // Define parameter addresses.
 const AudioUnitParameterID myParam1 = 0;
+//const AudioUnitParameterID myParam2 = 0;
+
+// filter sets up presets here
 
 @interface PedalAUAudioUnit ()
 
 @property (nonatomic, readwrite) AUParameterTree *parameterTree;
 
-// ADDED
+// ADDED  // check out why no input bus in filter --uses BufferedAudioBusC++ Clas
 
 @property AUAudioUnitBus *outputBus;
 @property AUAudioUnitBus *inputBus;
 @property AUAudioUnitBusArray *inputBusArray;
 @property AUAudioUnitBusArray *outputBusArray;
 
+@end
+
 // TO HERE
 
-@end
 
 
 @implementation PedalAUAudioUnit
@@ -45,11 +50,16 @@ const AudioUnitParameterID myParam1 = 0;
     
     // create a DSP Kernal to handle the signal processing? from filter"
     
-    // Create parameter objects.
+    // Create parameter objects.  checkout need for flags
     AUParameter *param1 = [AUParameterTree createParameterWithIdentifier:@"param1" name:@"Parameter 1" address:myParam1 min:0 max:100 unit:kAudioUnitParameterUnit_Percent unitName:nil flags:0 valueStrings:nil dependentParameters:nil];
+//    
+//    AUParameter *param2 = [AUParameterTree createParameterWithIdentifier:@"param2" name:@"Parameter 2" address:myParam2 min:0 max:100 unit:kAudioUnitParameterUnit_Percent unitName:nil flags:0 valueStrings:nil dependentParameters:nil];
     
     // Initialize the parameter values.
     param1.value = 0.5;
+//    param2.value = 0.5;
+    
+    // kernal work here in filter
     
     // Create the parameter tree.
     _parameterTree = [AUParameterTree createTreeWithChildren:@[ param1 ]];
@@ -58,8 +68,13 @@ const AudioUnitParameterID myParam1 = 0;
     
     // ADDED
     
+    
     _inputBus = [[AUAudioUnitBus alloc] initWithFormat:defaultFormat error:nil];
+    
+    
     _outputBus = [[AUAudioUnitBus alloc] initWithFormat:defaultFormat error:nil];
+    
+    
     
     // Create the input and output bus arrays (AUAudioUnitBusArray).
     
@@ -86,6 +101,7 @@ const AudioUnitParameterID myParam1 = 0;
     
     return self;
 }
+
 
 #pragma mark - AUAudioUnit Overrides
 

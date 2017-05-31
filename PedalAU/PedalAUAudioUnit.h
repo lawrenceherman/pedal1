@@ -10,6 +10,7 @@
 
 // Define parameter addresses.
 extern const AudioUnitParameterID myParam1;
+extern const AudioUnitParameterID myParam2;
 
 @interface PedalAUAudioUnit : AUAudioUnit
 
