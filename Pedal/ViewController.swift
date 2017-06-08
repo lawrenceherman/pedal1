@@ -19,8 +19,8 @@ class ViewController: UIViewController {
 //    var avAudioUnit = AVAudioUnit()
     
     
-    var audioEngine: AVAudioEngine!
-    var sourceNode: AVAudioPlayerNode!
+    var audioEngine = AVAudioEngine()
+    var sourceNode = AVAudioPlayerNode()
     var audioFile: AVAudioFile!
     var audioFileBuffer: AVAudioPCMBuffer!
     var componentDescription: AudioComponentDescription!
@@ -35,7 +35,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        // Listen for orientation changes  from newest av3 sample
+//        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.orientationChanged),
+//                                               name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        
+        
         embedPlugInView()
+        
         loadTempSource()
         
         componentDescription = AudioComponentDescription()
@@ -58,7 +64,7 @@ class ViewController: UIViewController {
         
    
         
-        sourceNode.play()
+//        sourceNode.play()
         
         
         
@@ -75,7 +81,7 @@ class ViewController: UIViewController {
         containerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
         
-        auViewController = AudioUnitViewController()
+        auViewController = AudioUnitViewController() as! AudioUnitViewController
         
         
         if let view = auViewController.view {
@@ -111,17 +117,17 @@ class ViewController: UIViewController {
     
     func loadAudioEngine() {
     
-        audioEngine = AVAudioEngine()
-        sourceNode = AVAudioPlayerNode()
+//        audioEngine = AVAudioEngine()
+//        sourceNode = AVAudioPlayerNode()
         
         audioEngine.attach(sourceNode)
         sourceNode.scheduleFile(audioFile, at: nil, completionHandler: nil)
         
-        let hardwareFormat = self.audioEngine.outputNode.outputFormat(forBus: 0)
+//        let hardwareFormat = self.audioEngine.outputNode.outputFormat(forBus: 0)
         
-        print("outputNode output \(hardwareFormat)\n\n")
+ //       print("outputNode output \(hardwareFormat)\n\n")
         
-        self.audioEngine.connect(self.audioEngine.mainMixerNode, to: self.audioEngine.outputNode, format: hardwareFormat)
+//        self.audioEngine.connect(self.audioEngine.mainMixerNode, to: self.audioEngine.outputNode, format: hardwareFormat)
         
         
         print("main mixer node input \(audioEngine.mainMixerNode.inputFormat(forBus: 0))\n\n")
@@ -140,18 +146,18 @@ class ViewController: UIViewController {
             
         
             self.testAUAudioUnit = avAudioUnit.auAudioUnit
-            
             self.testAVAudioUnit = avAudioUnit
-        
-            self.audioEngine.attach(avAudioUnit)
-            
-            self.auViewController.audioUnit = avAudioUnit.auAudioUnit as! PedalAUAudioUnit
+            self.audioEngine.attach(self.testAVAudioUnit)
 
+
+            let audioUnit = self.testAUAudioUnit as? PedalAUAudioUnit
+            self.auViewController.audioUnit = audioUnit
             
             
 //            print(avAudioUnit.numberOfOutputs)
 //            print(avAudioUnit.numberOfInputs)
 //            print(avAudioUnit.manufacturerName)
+        
 //            print(avAudioUnit.auAudioUnit.audioUnitName)
             
             
@@ -177,6 +183,8 @@ class ViewController: UIViewController {
             
 
 
+        
+        
         }
         
         
@@ -194,6 +202,94 @@ class ViewController: UIViewController {
 //            print(error)
 //        }
 //    }
+    
+    public func selectAudioUnitWithComponentDescription(_ componentDescription: AudioComponentDescription?, completionHandler: @escaping (() -> Void)) {
+        // Internal function to resume playing and call the completion handler.
+//        func done() {
+//            if isEffect() && isPlaying {
+//                player.play()
+//            } else if isInstrument() && isPlaying {
+//                instrumentPlayer = InstrumentPlayer(audioUnit: testAudioUnit)
+//                instrumentPlayer?.play()
+//            }
+//            
+//            completionHandler()
+//        }
+        
+        let hardwareFormat = self.engine.outputNode.outputFormat(forBus: 0)
+        
+        self.engine.connect(self.engine.mainMixerNode, to: self.engine.outputNode, format: hardwareFormat)
+        
+        /*
+         Pause the player before re-wiring it. (It is not simple to keep it
+         playing across an insertion or deletion.)
+         */
+//        if isEffect() && isPlaying {
+//            player.pause()
+//        } else if isInstrument() && isPlaying {
+//            instrumentPlayer?.stop()
+//            instrumentPlayer = nil
+//        }
+        
+        // Destroy any pre-existing unit.
+        if testAUAudioUnit != nil {
+            if isEffect() {
+                // Break player -> effect connection.
+                engine.disconnectNodeInput(testUnitNode!)
+            }
+            
+            // Break testUnitNode -> mixer connection
+            engine.disconnectNodeInput(engine.mainMixerNode)
+            
+            if isEffect() {
+                // Connect player -> mixer.
+                engine.connect(player, to: engine.mainMixerNode, format: file!.processingFormat)
+            }
+            
+            // We're done with the unit; release all references.
+            engine.detach(testUnitNode!)
+            
+            testUnitNode = nil
+            testAudioUnit = nil
+            presetList = [AUAudioUnitPreset]()
+        }
+        
+        // Insert the audio unit, if any.
+        if let componentDescription = componentDescription {
+            AVAudioUnit.instantiate(with: componentDescription, options: instantiationOptions) { avAudioUnit, _ in
+                guard let avAudioUnit = avAudioUnit else { return }
+                
+                // Important to do this here, before the audio unit is attached
+                self.testAudioUnit = avAudioUnit.auAudioUnit
+                if (self.testAudioUnit!.midiOutputNames.count > 0) {
+                    self.testAudioUnit!.midiOutputEventBlock = self.midiOutBlock
+                }
+                
+                self.testUnitNode = avAudioUnit
+                self.engine.attach(avAudioUnit)
+                
+                if self.isEffect() {
+                    // Disconnect player -> mixer.
+                    self.engine.disconnectNodeInput(self.engine.mainMixerNode)
+                    
+                    // Connect player -> effect -> mixer.
+                    self.engine.connect(self.player, to: avAudioUnit, format: self.file!.processingFormat)
+                    self.engine.connect(avAudioUnit, to: self.engine.mainMixerNode, format: self.file!.processingFormat)
+                } else {
+                    let stereoFormat = AVAudioFormat(standardFormatWithSampleRate: hardwareFormat.sampleRate, channels: 2)
+                    self.engine.connect(avAudioUnit, to: self.engine.mainMixerNode, format: stereoFormat)
+                }
+                
+                self.presetList = avAudioUnit.auAudioUnit.factoryPresets ?? []
+                avAudioUnit.auAudioUnit.contextName = "Sample code AUv3Host"
+                done()
+            }
+        } else {
+            done()
+        }
+    }
+}
+
 
 
 
