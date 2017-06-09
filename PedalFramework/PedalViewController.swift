@@ -9,7 +9,7 @@
 import UIKit
 import CoreAudioKit
 
-public class AudioUnitViewController: AUViewController {
+public class PedalViewController: AUViewController {
     
     public var audioUnit: PedalAUAudioUnit? {
         didSet {

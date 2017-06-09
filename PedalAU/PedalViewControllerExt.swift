@@ -10,7 +10,7 @@
 import CoreAudioKit
 import PedalFramework
 
-extension AudioUnitViewController: AUAudioUnitFactory {
+extension PedalViewController: AUAudioUnitFactory {
     
     
     

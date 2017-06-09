@@ -12,12 +12,12 @@
 		FECE4A8D1ED7829F00C043AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECE4A8C1ED7829F00C043AA /* AppDelegate.swift */; };
 		FECE4A8F1ED7829F00C043AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECE4A8E1ED7829F00C043AA /* ViewController.swift */; };
 		FECE4A941ED7829F00C043AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FECE4A931ED7829F00C043AA /* Assets.xcassets */; };
-		FECE4AA81ED782DB00C043AA /* AudioUnitViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECE4AA71ED782DB00C043AA /* AudioUnitViewControllerExt.swift */; };
+		FECE4AA81ED782DB00C043AA /* PedalViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECE4AA71ED782DB00C043AA /* PedalViewControllerExt.swift */; };
 		FECE4AB01ED782DB00C043AA /* PedalAU.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FECE4AA21ED782DB00C043AA /* PedalAU.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FECE4ABE1ED785B300C043AA /* PedalFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = FECE4ABC1ED785B300C043AA /* PedalFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FECE4AC11ED785B300C043AA /* PedalFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECE4ABA1ED785B300C043AA /* PedalFramework.framework */; };
 		FECE4AC31ED785B300C043AA /* PedalFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FECE4ABA1ED785B300C043AA /* PedalFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FECE4AC81ED7863B00C043AA /* AudioUnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECE4AC71ED7863B00C043AA /* AudioUnitViewController.swift */; };
+		FECE4AC81ED7863B00C043AA /* PedalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECE4AC71ED7863B00C043AA /* PedalViewController.swift */; };
 		FECE4AC91ED786B500C043AA /* PedalFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECE4ABA1ED785B300C043AA /* PedalFramework.framework */; };
 		FECE4ACA1ED7903500C043AA /* PedalAUAudioUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = FECE4AA51ED782DB00C043AA /* PedalAUAudioUnit.m */; };
 		FECE4ACC1ED79DAD00C043AA /* PedalAUAudioUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = FECE4AA41ED782DB00C043AA /* PedalAUAudioUnit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -78,12 +78,12 @@
 		FECE4AA21ED782DB00C043AA /* PedalAU.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PedalAU.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		FECE4AA41ED782DB00C043AA /* PedalAUAudioUnit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PedalAUAudioUnit.h; path = ../PedalAU/PedalAUAudioUnit.h; sourceTree = "<group>"; };
 		FECE4AA51ED782DB00C043AA /* PedalAUAudioUnit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PedalAUAudioUnit.m; path = ../PedalAU/PedalAUAudioUnit.m; sourceTree = "<group>"; };
-		FECE4AA71ED782DB00C043AA /* AudioUnitViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioUnitViewControllerExt.swift; sourceTree = "<group>"; };
+		FECE4AA71ED782DB00C043AA /* PedalViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedalViewControllerExt.swift; sourceTree = "<group>"; };
 		FECE4AAC1ED782DB00C043AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FECE4ABA1ED785B300C043AA /* PedalFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PedalFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FECE4ABC1ED785B300C043AA /* PedalFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PedalFramework.h; sourceTree = "<group>"; };
 		FECE4ABD1ED785B300C043AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FECE4AC71ED7863B00C043AA /* AudioUnitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioUnitViewController.swift; sourceTree = "<group>"; };
+		FECE4AC71ED7863B00C043AA /* PedalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedalViewController.swift; sourceTree = "<group>"; };
 		FECE4ACE1ED7A4A600C043AA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FECE4AD01ED7A4AA00C043AA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -161,7 +161,7 @@
 		FECE4AA31ED782DB00C043AA /* PedalAU */ = {
 			isa = PBXGroup;
 			children = (
-				FECE4AA71ED782DB00C043AA /* AudioUnitViewControllerExt.swift */,
+				FECE4AA71ED782DB00C043AA /* PedalViewControllerExt.swift */,
 				FECE4AAC1ED782DB00C043AA /* Info.plist */,
 			);
 			path = PedalAU;
@@ -175,7 +175,7 @@
 				FECE4AA51ED782DB00C043AA /* PedalAUAudioUnit.m */,
 				FECE4ABC1ED785B300C043AA /* PedalFramework.h */,
 				FECE4ABD1ED785B300C043AA /* Info.plist */,
-				FECE4AC71ED7863B00C043AA /* AudioUnitViewController.swift */,
+				FECE4AC71ED7863B00C043AA /* PedalViewController.swift */,
 			);
 			path = PedalFramework;
 			sourceTree = "<group>";
@@ -349,7 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FECE4AA81ED782DB00C043AA /* AudioUnitViewControllerExt.swift in Sources */,
+				FECE4AA81ED782DB00C043AA /* PedalViewControllerExt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,7 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FECE4ACA1ED7903500C043AA /* PedalAUAudioUnit.m in Sources */,
-				FECE4AC81ED7863B00C043AA /* AudioUnitViewController.swift in Sources */,
+				FECE4AC81ED7863B00C043AA /* PedalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
