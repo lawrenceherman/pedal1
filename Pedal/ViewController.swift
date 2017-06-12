@@ -14,9 +14,6 @@ import CoreAudioKit
 
 class ViewController: UIViewController {
     
-    
-    
-    
     var auViewController: PedalViewController!
     var containerView: UIView!
     //  var session: AVAudioSession!
@@ -33,7 +30,6 @@ class ViewController: UIViewController {
     
     var testAUAudioUnit: AUAudioUnit!
     var testAVAudioUnit: AVAudioUnit!
-    
     
     private var componentType = kAudioUnitType_Effect
     
@@ -83,32 +79,29 @@ class ViewController: UIViewController {
         componentDescription.componentType = kAudioUnitType_Effect
         
         // figure out this OSType.  "Manufacturer needs to be registered with apple"
-        componentDescription.componentSubType = 0x666c7472 /*fltr*/
-        componentDescription.componentManufacturer = 0x44656d6f /*Demo*/
+        componentDescription.componentSubType = 0x41557364 /*AUsd*/
+        componentDescription.componentManufacturer = 0x4c483432 /*LH42*/
         
         // these are supposed to be set to 0
         componentDescription.componentFlags = 0
         componentDescription.componentFlagsMask = 0
         
         // whats up with version.  does name need to match .info on appex
-        AUAudioUnit.registerSubclass(PedalAUAudioUnit.self, as: componentDescription, name: "Demo: PedalAU", version: UInt32.max)
-        
-        
-        
-        //        sourceNode.play()
+        AUAudioUnit.registerSubclass(PedalAUAudioUnit.self, as: componentDescription, name: "LH42: Local PedalAUAudioUnit", version: UInt32.max)
         
         selectAudioUnitWithComponentDescription(componentDescription) {
             
             self.connectParametersToControls()
             
-            //        do {
-            //            try self.audioEngine.start()
-            //        } catch {
-            //
-            //        print("could not start audioEngine")
-            //
-            //        }
+            do {
+                try self.audioEngine.start()
+            } catch {
+                
+                print("could not start audioEngine")
+                
+            }
             
+            self.sourceNode.play()
             
             
         }
@@ -158,8 +151,8 @@ class ViewController: UIViewController {
         sourceNode.scheduleFile(audioFile, at: nil, completionHandler: nil)
         
         
-        let hardwareFormat = self.audioEngine.outputNode.outputFormat(forBus: 0)
-        audioEngine.connect(audioEngine.mainMixerNode, to: audioEngine.outputNode, format: hardwareFormat)
+//        let hardwareFormat = self.audioEngine.outputNode.outputFormat(forBus: 0)
+//        audioEngine.connect(audioEngine.mainMixerNode, to: audioEngine.outputNode, format: hardwareFormat)
         
         // Destroy any pre-existing unit.
         if testAUAudioUnit != nil {
@@ -209,7 +202,7 @@ class ViewController: UIViewController {
         completionHandler()
         
     }
-
+    
     
     
     func loadTempSource() {
