@@ -16,14 +16,14 @@ public class PedalViewController: AUViewController {
             
             
             
-//            
-//            DispatchQueue.main.async {
-//                if self.isViewLoaded{
-//                    self.connectViewWithAU()
-//                }
-//            }
             
-            print("AudioUnitViewControllerwasset")
+            DispatchQueue.main.async {
+                if self.isViewLoaded{
+                    self.connectViewWithAU()
+                }
+            }
+            
+//            print("AudioUnitViewControllerwasset")
             
         }
         
@@ -33,7 +33,9 @@ public class PedalViewController: AUViewController {
     
     func connectViewWithAU() {
         
+        guard let paramTree = audioUnit?.parameterTree else { return }
         
+//        audioUnit?.PedalViewController = self
         
         
     }
@@ -42,6 +44,8 @@ public class PedalViewController: AUViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard audioUnit != nil else { return }
+        
         let cgrect = CGRect(x: 0, y: 0, width: 100, height: 100)
         let tempLabel = UILabel(frame: cgrect)
         self.view.addSubview(tempLabel)
@@ -49,15 +53,17 @@ public class PedalViewController: AUViewController {
         tempLabel.text = "Hello"
         
         
+        connectViewWithAU()
         
-        if audioUnit == nil {
-            print("inside AudioUnitViewController audiounit is nil\n\n")
         
-        } else {
-            print("inside AudioUnitViewController audiounit is not nil \n\n")
-        }
+//        if audioUnit == nil {
+//            print("inside AudioUnitViewController audiounit is nil\n\n")
+//
+//        } else {
+//            print("inside AudioUnitViewController audiounit is not nil \n\n")
+//        }
         
-        // Get the parameter tree and add observers for any parameters that the UI needs to keep in sync with the AudioUnit
+        
     
     }
     

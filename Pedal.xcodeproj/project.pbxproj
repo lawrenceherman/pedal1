@@ -19,13 +19,20 @@
 		FECE4AC31ED785B300C043AA /* PedalFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FECE4ABA1ED785B300C043AA /* PedalFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FECE4AC81ED7863B00C043AA /* PedalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECE4AC71ED7863B00C043AA /* PedalViewController.swift */; };
 		FECE4AC91ED786B500C043AA /* PedalFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECE4ABA1ED785B300C043AA /* PedalFramework.framework */; };
-		FECE4ACA1ED7903500C043AA /* PedalAUAudioUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = FECE4AA51ED782DB00C043AA /* PedalAUAudioUnit.m */; };
-		FECE4ACC1ED79DAD00C043AA /* PedalAUAudioUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = FECE4AA41ED782DB00C043AA /* PedalAUAudioUnit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FECE4ACA1ED7903500C043AA /* PedalAU.mm in Sources */ = {isa = PBXBuildFile; fileRef = FECE4AA51ED782DB00C043AA /* PedalAU.mm */; };
+		FECE4ACC1ED79DAD00C043AA /* PedalAU.h in Headers */ = {isa = PBXBuildFile; fileRef = FECE4AA41ED782DB00C043AA /* PedalAU.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FECE4ACF1ED7A4A600C043AA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECE4ACE1ED7A4A600C043AA /* AudioToolbox.framework */; };
 		FECE4AD11ED7A4AA00C043AA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECE4AD01ED7A4AA00C043AA /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		FE15EA251EF17E7600534F4C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FECE4A811ED7829F00C043AA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FECE4AB91ED785B300C043AA;
+			remoteInfo = PedalFramework;
+		};
 		FECE4AAE1ED782DB00C043AA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FECE4A811ED7829F00C043AA /* Project object */;
@@ -76,8 +83,8 @@
 		FECE4A931ED7829F00C043AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FECE4A981ED7829F00C043AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FECE4AA21ED782DB00C043AA /* PedalAU.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PedalAU.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		FECE4AA41ED782DB00C043AA /* PedalAUAudioUnit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PedalAUAudioUnit.h; path = ../PedalAU/PedalAUAudioUnit.h; sourceTree = "<group>"; };
-		FECE4AA51ED782DB00C043AA /* PedalAUAudioUnit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PedalAUAudioUnit.m; path = ../PedalAU/PedalAUAudioUnit.m; sourceTree = "<group>"; };
+		FECE4AA41ED782DB00C043AA /* PedalAU.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PedalAU.h; path = ../PedalAU/PedalAU.h; sourceTree = "<group>"; };
+		FECE4AA51ED782DB00C043AA /* PedalAU.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = PedalAU.mm; path = ../PedalAU/PedalAU.mm; sourceTree = "<group>"; };
 		FECE4AA71ED782DB00C043AA /* PedalViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedalViewControllerExt.swift; sourceTree = "<group>"; };
 		FECE4AAC1ED782DB00C043AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FECE4ABA1ED785B300C043AA /* PedalFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PedalFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,8 +178,8 @@
 			isa = PBXGroup;
 			children = (
 				FEC715871EDF32990006F1B6 /* BufferedAudioBus.hpp */,
-				FECE4AA41ED782DB00C043AA /* PedalAUAudioUnit.h */,
-				FECE4AA51ED782DB00C043AA /* PedalAUAudioUnit.m */,
+				FECE4AA41ED782DB00C043AA /* PedalAU.h */,
+				FECE4AA51ED782DB00C043AA /* PedalAU.mm */,
 				FECE4ABC1ED785B300C043AA /* PedalFramework.h */,
 				FECE4ABD1ED785B300C043AA /* Info.plist */,
 				FECE4AC71ED7863B00C043AA /* PedalViewController.swift */,
@@ -198,7 +205,7 @@
 			files = (
 				FECE4ABE1ED785B300C043AA /* PedalFramework.h in Headers */,
 				FEC715881EDF32990006F1B6 /* BufferedAudioBus.hpp in Headers */,
-				FECE4ACC1ED79DAD00C043AA /* PedalAUAudioUnit.h in Headers */,
+				FECE4ACC1ED79DAD00C043AA /* PedalAU.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +244,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				FE15EA261EF17E7600534F4C /* PBXTargetDependency */,
 			);
 			name = PedalAU;
 			productName = PedalAU;
@@ -268,7 +276,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Lawrence Herman";
 				TargetAttributes = {
 					FECE4A881ED7829F00C043AA = {
@@ -359,7 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FECE4ACA1ED7903500C043AA /* PedalAUAudioUnit.m in Sources */,
+				FECE4ACA1ED7903500C043AA /* PedalAU.mm in Sources */,
 				FECE4AC81ED7863B00C043AA /* PedalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,6 +375,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		FE15EA261EF17E7600534F4C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FECE4AB91ED785B300C043AA /* PedalFramework */;
+			targetProxy = FE15EA251EF17E7600534F4C /* PBXContainerItemProxy */;
+		};
 		FECE4AAF1ED782DB00C043AA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FECE4AA11ED782DB00C043AA /* PedalAU */;
@@ -390,7 +403,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -398,7 +413,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -427,7 +446,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -441,7 +460,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -449,7 +470,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -470,7 +495,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -485,7 +510,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Lawrence-Herman.Pedal";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -501,7 +526,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Lawrence-Herman.Pedal";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};

@@ -101,7 +101,7 @@ class ViewController: UIViewController {
                 
             }
             
-            self.sourceNode.play()
+//            self.sourceNode.play()
             
             
         }

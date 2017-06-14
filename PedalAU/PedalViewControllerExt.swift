@@ -12,11 +12,9 @@ import PedalFramework
 
 extension PedalViewController: AUAudioUnitFactory {
     
-    
-    
-    
     public func createAudioUnit(with componentDescription: AudioComponentDescription) throws -> AUAudioUnit {
         audioUnit = try PedalAUAudioUnit(componentDescription: componentDescription, options: [])
+        audioUnit?.auViewController = self
         
         return audioUnit!
     }
