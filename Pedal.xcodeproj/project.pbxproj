@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FE7B21031EDDADD000FC3A85 /* DTTS 44.1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FE7B21021EDDADD000FC3A85 /* DTTS 44.1.mp3 */; };
+		FEA78EB01EF9632E00031B0A /* PedalViewControllerExt.h in Headers */ = {isa = PBXBuildFile; fileRef = FEA78EAF1EF9632E00031B0A /* PedalViewControllerExt.h */; };
 		FEC715881EDF32990006F1B6 /* BufferedAudioBus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = FEC715871EDF32990006F1B6 /* BufferedAudioBus.hpp */; };
 		FECE4A8D1ED7829F00C043AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECE4A8C1ED7829F00C043AA /* AppDelegate.swift */; };
 		FECE4A8F1ED7829F00C043AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECE4A8E1ED7829F00C043AA /* ViewController.swift */; };
@@ -76,6 +77,7 @@
 
 /* Begin PBXFileReference section */
 		FE7B21021EDDADD000FC3A85 /* DTTS 44.1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "DTTS 44.1.mp3"; sourceTree = "<group>"; };
+		FEA78EAF1EF9632E00031B0A /* PedalViewControllerExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PedalViewControllerExt.h; sourceTree = "<group>"; };
 		FEC715871EDF32990006F1B6 /* BufferedAudioBus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BufferedAudioBus.hpp; sourceTree = "<group>"; };
 		FECE4A891ED7829F00C043AA /* Pedal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pedal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FECE4A8C1ED7829F00C043AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				FECE4ABC1ED785B300C043AA /* PedalFramework.h */,
 				FECE4ABD1ED785B300C043AA /* Info.plist */,
 				FECE4AC71ED7863B00C043AA /* PedalViewController.swift */,
+				FEA78EAF1EF9632E00031B0A /* PedalViewControllerExt.h */,
 			);
 			path = PedalFramework;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEA78EB01EF9632E00031B0A /* PedalViewControllerExt.h in Headers */,
 				FECE4ABE1ED785B300C043AA /* PedalFramework.h in Headers */,
 				FEC715881EDF32990006F1B6 /* BufferedAudioBus.hpp in Headers */,
 				FECE4ACC1ED79DAD00C043AA /* PedalAU.h in Headers */,
@@ -542,7 +546,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -558,7 +562,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};

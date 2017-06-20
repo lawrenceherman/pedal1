@@ -15,7 +15,7 @@
 
 // ***************
 // example has is viewcontroller extension with a .h
-#import "PedalViewControllerExt.swift"
+//#import "PedalViewControllerExt.h"
 
 // filter sets up presets here
 
@@ -51,6 +51,8 @@
     self = [super initWithComponentDescription:componentDescription options:options error:outError];
     
     if (self == nil) {return nil; }
+    
+    printf("inside .mm PedalAU initWithcomponentDescription/n/n");
     
     // componentFlags 0x0000001e == SandboxSafe(2) + IsV3AudioUnit(4) + RequiresAsyncInstantiation(8) + CanLoadInProcess(0x10)
     NSLog(@"AUv3FilterDemo initWithComponentDescription:\n componentType: %c%c%c%c\n componentSubType: %c%c%c%c\n componentManufacturer: %c%c%c%c\n componentFlags: %#010x",

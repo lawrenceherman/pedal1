@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     var testAUAudioUnit: AUAudioUnit!
     var testAVAudioUnit: AVAudioUnit!
     
-    private var componentType = kAudioUnitType_Effect
+    var componentType = kAudioUnitType_Effect
     
     
     func clearPreviousAudioUnit () {
@@ -61,16 +61,14 @@ class ViewController: UIViewController {
         
         
         
+     //   clearPreviousAudioUnit()
         
-        // set up the plug in view
-        embedPlugInView()
         
         // create engine and load temp file
         audioEngine = AVAudioEngine()
         
         loadTempSource()
         
-        clearPreviousAudioUnit()
         
         
         var componentDescription = AudioComponentDescription()
@@ -87,9 +85,11 @@ class ViewController: UIViewController {
         componentDescription.componentFlagsMask = 0
         
         // whats up with version.  does name need to match .info on appex
-        AUAudioUnit.registerSubclass(PedalAUAudioUnit.self, as: componentDescription, name: "LH42: Local PedalAUAudioUnit", version: UInt32.max)
+        AUAudioUnit.registerSubclass(PedalAUAudioUnit.self, as: componentDescription, name: "LH42: PedalAU", version: UInt32.max)
         
         selectAudioUnitWithComponentDescription(componentDescription) {
+            
+            
             
             self.connectParametersToControls()
             
@@ -134,11 +134,15 @@ class ViewController: UIViewController {
     
     func connectParametersToControls() {
         
+        
+        
+        print("inside connectParametersToControls/n")
+        
         let audioUnit = testAUAudioUnit as? PedalAUAudioUnit
+        
+        
+        
         auViewController.audioUnit = audioUnit
-        
-        
-        
         
     }
     
@@ -181,12 +185,26 @@ class ViewController: UIViewController {
                 
                 guard let avAudioUnit = avAudioUnit else { return }
                 
+                print("inside instiate right after avAudioUnit Guard")
+                
+                
                 // Important to do this here, before the audio unit is attached
                 
                 self.testAUAudioUnit = avAudioUnit.auAudioUnit
                 
                 
                 self.testAVAudioUnit = avAudioUnit
+                
+                if self.testAUAudioUnit != nil  {
+                    print("our testAUAudioUnit is not nil")
+                    print(self.testAVAudioUnit.audioComponentDescription)
+                }
+                
+                
+                if self.testAVAudioUnit != nil {
+                    print("our returned avAudioUnit was assigned to testAVAudioUnit")
+                }
+                
                 self.audioEngine.attach(avAudioUnit)
                 
                 self.audioEngine.disconnectNodeInput(self.audioEngine.mainMixerNode)

@@ -6,8 +6,8 @@
 //  Copyright © 2017 Lawrence Herman. All rights reserved.
 //
 
-#ifndef PedalAUAudioUnit_h
-#define FilterDemo_h
+#ifndef PedalAU_h
+#define PedalAU_h
 
 #import <AudioToolbox/AudioToolbox.h>
 

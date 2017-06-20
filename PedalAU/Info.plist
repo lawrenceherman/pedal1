@@ -30,13 +30,11 @@
 			<array>
 				<dict>
 					<key>description</key>
-					<string>PedalAUAudioUnit</string>
-					<key>factoryFunction</key>
-					<string>$(PRODUCT_MODULE_NAME).PedalViewController</string>
+					<string>PedalAU</string>
 					<key>manufacturer</key>
 					<string>LH42</string>
 					<key>name</key>
-					<string>LH42: PedalAUAudioUnit</string>
+					<string>LH42: PedalAU</string>
 					<key>sandboxSafe</key>
 					<true/>
 					<key>subtype</key>

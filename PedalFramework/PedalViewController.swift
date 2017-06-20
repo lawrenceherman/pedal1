@@ -14,7 +14,7 @@ public class PedalViewController: AUViewController {
     public var audioUnit: PedalAUAudioUnit? {
         didSet {
             
-            
+            print("PedalViewcontroller audioUnit didset")
             
             
             DispatchQueue.main.async {
@@ -33,7 +33,7 @@ public class PedalViewController: AUViewController {
     
     func connectViewWithAU() {
         
-        guard let paramTree = audioUnit?.parameterTree else { return }
+ //       guard let paramTree = audioUnit?.parameterTree else { return }
         
 //        audioUnit?.PedalViewController = self
         
@@ -44,7 +44,11 @@ public class PedalViewController: AUViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard audioUnit != nil else { return }
+//        guard audioUnit != nil else { return }
+        
+        if audioUnit == nil {
+            print("PedalViewController audio unit is nill/n/n")
+        }
         
         let cgrect = CGRect(x: 0, y: 0, width: 100, height: 100)
         let tempLabel = UILabel(frame: cgrect)
